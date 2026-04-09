@@ -16,7 +16,11 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: [
+      'https://kca-fe.vercel.app',
+      'https://kca-fe.vercel.app/',
+      'http://localhost:3000'
+    ],
     credentials: true,
   });
 
