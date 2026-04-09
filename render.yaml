@@ -5,12 +5,9 @@ services:
     plan: free
     buildCommand: npm install --include=dev && npm run build
     startCommand: node dist/main.js
-    healthCheckPath: /
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3001
       - key: DB_HOST
         fromDatabase:
           name: kca-db
