@@ -1,0 +1,65 @@
+services:
+  - type: web
+    name: kca-be
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node dist/main
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DB_HOST
+        fromDatabase:
+          name: kca-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: kca-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: kca-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: kca-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: kca-db
+          property: database
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 30d
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dlak2fbjl
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+databases:
+  - name: kca-db
+    plan: free
+    databaseName: kca_db
+    user: admin
