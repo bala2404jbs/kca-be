@@ -7,6 +7,12 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get()
+  @ApiOperation({ summary: 'Root health check' })
+  getRoot() {
+    return { status: 'ok' };
+  }
+
   @Get('health')
   @ApiOperation({ summary: 'System health check ping' })
   getHealth() {
