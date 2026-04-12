@@ -9,6 +9,12 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class PageMediaController {
   constructor(private readonly service: PageMediaService) {}
 
+  @Get()
+  @ApiOperation({ summary: 'Get all page media records (Public)' })
+  findAll() {
+    return this.service.findAll();
+  }
+
   @Get(':page')
   @ApiOperation({ summary: 'Get media for a page (Public)' })
   findByPage(@Param('page') page: string) {

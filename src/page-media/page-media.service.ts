@@ -11,6 +11,10 @@ export class PageMediaService {
     private readonly repo: Repository<PageMedia>,
   ) {}
 
+  async findAll(): Promise<PageMedia[]> {
+    return this.repo.find();
+  }
+
   async findByPage(page: string): Promise<PageMedia> {
     const record = await this.repo.findOne({ where: { page } });
     if (!record) throw new NotFoundException(`No media found for page: ${page}`);
