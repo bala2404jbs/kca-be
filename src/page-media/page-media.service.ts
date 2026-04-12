@@ -12,7 +12,7 @@ export class PageMediaService {
   ) {}
 
   async findAll(): Promise<PageMedia[]> {
-    return this.repo.find();
+    return this.repo.find({ order: { order: 'ASC' } });
   }
 
   async findByPage(page: string): Promise<PageMedia> {
@@ -28,5 +28,12 @@ export class PageMediaService {
     }
     Object.assign(record, dto);
     return this.repo.save(record);
+  }
+
+  async remove(page: string): Promise<void> {
+    const record = await this.repo.findOne({ where: { page } });
+    if (record) {
+      await this.repo.remove(record);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsArray } from 'class-validator';
+import { IsString, IsOptional, IsArray, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdatePageMediaDto {
@@ -18,4 +18,9 @@ export class UpdatePageMediaDto {
   @IsArray()
   @IsString({ each: true })
   youtubeVideoIds?: string[];
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsNumber()
+  order?: number;
 }

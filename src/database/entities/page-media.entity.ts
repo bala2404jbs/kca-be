@@ -19,6 +19,9 @@ export class PageMedia {
   @Column('simple-array', { nullable: true })
   youtubeVideoIds: string[];
 
+  @Column({ default: 0 })
+  order: number;
+
   @UpdateDateColumn()
   updatedAt: Date;
 }
