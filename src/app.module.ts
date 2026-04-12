@@ -15,6 +15,7 @@ import { NewsletterModule } from './newsletter/newsletter.module';
 import { ProgramsModule } from './programs/programs.module';
 import { PageMediaModule } from './page-media/page-media.module';
 import { EventsModule } from './events/events.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 import { LoggingMiddleware } from './common/middleware/logging.middleware';
 
 @Module({
@@ -33,6 +34,7 @@ import { LoggingMiddleware } from './common/middleware/logging.middleware';
     ProgramsModule,
     PageMediaModule,
     EventsModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
