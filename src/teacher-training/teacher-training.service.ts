@@ -32,4 +32,9 @@ export class TeacherTrainingService {
     application.status = updateDto.status;
     return await this.repository.save(application);
   }
+
+  async remove(id: string) {
+    const application = await this.findOne(id);
+    return await this.repository.remove(application);
+  }
 }

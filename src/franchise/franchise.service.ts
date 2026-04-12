@@ -32,4 +32,9 @@ export class FranchiseService {
     inquiry.status = updateDto.status;
     return await this.repository.save(inquiry);
   }
+
+  async remove(id: string) {
+    const inquiry = await this.findOne(id);
+    return await this.repository.remove(inquiry);
+  }
 }

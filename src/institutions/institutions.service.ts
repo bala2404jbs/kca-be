@@ -32,4 +32,9 @@ export class InstitutionsService {
     inquiry.status = updateDto.status;
     return await this.inquiryRepository.save(inquiry);
   }
+
+  async remove(id: string) {
+    const inquiry = await this.findOne(id);
+    return await this.inquiryRepository.remove(inquiry);
+  }
 }

@@ -33,4 +33,10 @@ export class NewsletterService {
   async findAll() {
     return await this.repository.find({ order: { subscribedAt: 'DESC' } });
   }
+
+  async remove(id: string) {
+    const subscriber = await this.repository.findOne({ where: { id } });
+    if (!subscriber) throw new NotFoundException('Subscriber not found');
+    return await this.repository.remove(subscriber);
+  }
 }
